@@ -1,7 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import { Calendar } from "lucide-react";
-import { useState } from "react";
 import {
   Dialog,
   DialogContent,
@@ -9,14 +7,10 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
 import { BookingForm } from "./BookingForm";
+import { ImageGallery } from "./ImageGallery";
+import { AmenitiesList } from "./AmenitiesList";
+import { BookingRules } from "./BookingRules";
 
 interface ExperienceDetailsProps {
   title: string;
@@ -41,23 +35,7 @@ export const ExperienceDetails = ({
     <div className="container mx-auto px-4 py-8">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         <div className="space-y-6">
-          <Carousel className="w-full">
-            <CarouselContent>
-              {images.map((image, index) => (
-                <CarouselItem key={index}>
-                  <div className="aspect-[16/9] relative overflow-hidden rounded-lg">
-                    <img
-                      src={image}
-                      alt={`${title} - Image ${index + 1}`}
-                      className="object-cover w-full h-full"
-                    />
-                  </div>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-            <CarouselPrevious />
-            <CarouselNext />
-          </Carousel>
+          <ImageGallery images={images} title={title} />
         </div>
 
         <div className="space-y-6">
@@ -70,27 +48,8 @@ export const ExperienceDetails = ({
             <p>{description}</p>
           </div>
 
-          <div>
-            <h2 className="text-xl font-semibold mb-3">Amenities</h2>
-            <div className="flex flex-wrap gap-2">
-              {amenities.map((amenity) => (
-                <Badge key={amenity} variant="secondary">
-                  {amenity}
-                </Badge>
-              ))}
-            </div>
-          </div>
-
-          {rules.length > 0 && (
-            <div>
-              <h2 className="text-xl font-semibold mb-3">Booking Rules</h2>
-              <ul className="list-disc list-inside space-y-2">
-                {rules.map((rule) => (
-                  <li key={rule}>{rule}</li>
-                ))}
-              </ul>
-            </div>
-          )}
+          <AmenitiesList amenities={amenities} />
+          <BookingRules rules={rules} />
 
           <div className="border-t pt-6">
             <div className="flex items-center justify-between mb-4">
