@@ -3,12 +3,20 @@ import { Badge } from "@/components/ui/badge";
 import { Calendar } from "lucide-react";
 import { useState } from "react";
 import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import {
   Carousel,
   CarouselContent,
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import { BookingForm } from "./BookingForm";
 
 interface ExperienceDetailsProps {
   title: string;
@@ -29,8 +37,6 @@ export const ExperienceDetails = ({
   amenities,
   rules = [],
 }: ExperienceDetailsProps) => {
-  const [selectedImage, setSelectedImage] = useState(0);
-
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -89,10 +95,20 @@ export const ExperienceDetails = ({
           <div className="border-t pt-6">
             <div className="flex items-center justify-between mb-4">
               <span className="text-2xl font-bold">{price}</span>
-              <Button className="gap-2">
-                <Calendar className="h-4 w-4" />
-                Book Now
-              </Button>
+              <Dialog>
+                <DialogTrigger asChild>
+                  <Button className="gap-2">
+                    <Calendar className="h-4 w-4" />
+                    Book Now
+                  </Button>
+                </DialogTrigger>
+                <DialogContent className="sm:max-w-[600px]">
+                  <DialogHeader>
+                    <DialogTitle>Book {title}</DialogTitle>
+                  </DialogHeader>
+                  <BookingForm />
+                </DialogContent>
+              </Dialog>
             </div>
           </div>
         </div>
