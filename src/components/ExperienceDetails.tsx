@@ -65,7 +65,7 @@ export const ExperienceDetails = ({
                   <DialogHeader>
                     <DialogTitle>Book {title}</DialogTitle>
                   </DialogHeader>
-                  <BookingForm />
+                  <BookingForm amenities={amenities} />
                 </DialogContent>
               </Dialog>
             </div>

@@ -1,4 +1,5 @@
 import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 import {
   FormControl,
   FormField,
@@ -66,6 +67,24 @@ export const BookingCustomerInfo = ({ form }: BookingCustomerInfoProps) => {
             <FormLabel>Phone Number</FormLabel>
             <FormControl>
               <Input type="tel" placeholder="Enter your phone number" {...field} />
+            </FormControl>
+            <FormMessage />
+          </FormItem>
+        )}
+      />
+
+      <FormField
+        control={form.control}
+        name="customerInfo.specialRequests"
+        render={({ field }) => (
+          <FormItem>
+            <FormLabel>Special Requests</FormLabel>
+            <FormControl>
+              <Textarea 
+                placeholder="Any special requests or requirements?"
+                className="resize-none"
+                {...field}
+              />
             </FormControl>
             <FormMessage />
           </FormItem>
