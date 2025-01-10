@@ -1,45 +1,46 @@
+import { Link } from "react-router-dom";
 import { ExperienceCard } from "./ExperienceCard";
 
-const experiences = [
+const featuredExperiences = [
   {
+    id: 1,
     title: "Kpatawee Waterfalls",
     location: "Bong County",
     description: "Experience the majestic twin waterfalls surrounded by lush rainforest. Perfect for hiking and nature photography.",
     price: "From $75",
-    imageUrl: "/placeholder.svg",
-    tags: ["Waterfall", "Hiking", "Nature"],
+    imageUrl: "https://images.unsplash.com/photo-1498050108023-c5249f4df085",
+    tags: ["Nature", "Adventure", "Photography"],
   },
   {
-    title: "Nimba Ecolodge Resort",
-    location: "Nimba County",
-    description: "Luxury eco-friendly accommodation with panoramic mountain views and traditional Liberian hospitality.",
+    id: 2,
+    title: "Sapo National Park",
+    location: "Sinoe County",
+    description: "Explore Liberia's largest protected area of rainforest, home to diverse wildlife and rare species.",
     price: "From $120",
-    imageUrl: "/placeholder.svg",
-    tags: ["Eco Resort", "Mountain View", "Luxury"],
+    imageUrl: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d",
+    tags: ["Wildlife", "Nature", "Guided Tour"],
   },
   {
-    title: "Robertsport Beach",
-    location: "Grand Cape Mount",
-    description: "Pristine beaches perfect for surfing, fishing, and relaxation. Experience stunning sunset views.",
-    price: "From $50",
-    imageUrl: "/placeholder.svg",
-    tags: ["Beach", "Surfing", "Sunset"],
+    id: 3,
+    title: "Providence Island",
+    location: "Monrovia",
+    description: "Discover the historical landing site of freed American slaves and learn about Liberia's founding history.",
+    price: "From $45",
+    imageUrl: "https://images.unsplash.com/photo-1649972904349-6e44c42644a7",
+    tags: ["Historical", "Cultural", "Educational"],
   },
 ];
 
 export const FeaturedExperiences = () => {
   return (
-    <section className="py-16 bg-sand-50">
+    <section className="py-12">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold mb-4">Featured Experiences</h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
-            Discover handpicked experiences that showcase the best of Liberia's natural beauty and cultural heritage
-          </p>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {experiences.map((experience) => (
-            <ExperienceCard key={experience.title} {...experience} />
+        <h2 className="text-3xl font-bold mb-8">Featured Experiences</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {featuredExperiences.map((experience) => (
+            <Link key={experience.id} to={`/experience/${experience.id}`}>
+              <ExperienceCard {...experience} />
+            </Link>
           ))}
         </div>
       </div>
